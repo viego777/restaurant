@@ -56,5 +56,5 @@ const productsWithPricesAndQuantities = input.products.map(product => ({
             restaurantId: restaurant.id,
         },
     });
-    redirect(`/${input.slug}/orders`);
+    redirect(`/${input.slug}/orders?cpf=${removeCpfPunctuation(input.customerCpf)}`);
 };
