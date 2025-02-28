@@ -31,8 +31,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { createOrder } from "../actions/create-order";
-import { createStripeCheckout } from "../actions/create-stripe-checkout";
+import { createOrder } from "../actions/creat-order";
+import { createStripeCheckout } from "../actions/creat-stripe-checkout";
 import { CartContext } from "../contexts/cart";
 import { isValidCpf } from "../helpers/cpf";
 
