@@ -2,7 +2,6 @@
 
 import { ConsumptionMethod } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 import { db } from "@/lib/prisma";
 
@@ -42,7 +41,7 @@ const productsWithPricesAndQuantities = input.products.map(product => ({
     price: productsWithPrices.find(p => p.id === product.id)!.price
 }))
 
-    await db.order.create({
+    const order = await db.order.create({
         data: {
             status: 'PENDING',
             customerName: input.customerName,
@@ -60,5 +59,6 @@ const productsWithPricesAndQuantities = input.products.map(product => ({
         },
     });
     revalidatePath(`/${input.slug}/orders`);
-    redirect(`/${input.slug}/orders?cpf=${removeCpfPunctuation(input.customerCpf)}`);
+    //redirect(`/${input.slug}/orders?cpf=${removeCpfPunctuation(input.customerCpf)}`);
+    return order;
 };
